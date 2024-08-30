@@ -1,0 +1,11 @@
+@import "@style/_util.scss";
+
+.noMoreMsg {
+  height: .8rem;
+  @include flexCenter;
+
+  p {
+    color: var(--text) !important;
+    font-size: .24rem !important;
+  }
+}

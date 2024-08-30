@@ -1,0 +1,80 @@
+@import "./_reset.scss";
+@import "./_util.scss";
+
+body {
+  background: var(--body);
+}
+
+.app {
+  position: relative;
+  max-width: 750px;
+  width: 100%;
+  margin: 0 auto;
+  height: 100vh;
+  background: var(--bg);
+  box-shadow: 0 0 .3rem var(--bg);
+  overflow: hidden;
+}
+
+.page {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  padding-top: 1rem;
+  transition: transform .3s;
+
+  &.pageNav {
+    padding-bottom: 1rem;
+  }
+
+  &.active {
+    transform: translateX(70%);
+  }
+}
+
+.pageWrapper {
+  position: relative;
+  height: 100%;
+  overflow-y: auto;
+}
+
+figure {
+  position: relative;
+  overflow: hidden;
+
+  img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+}
+
+
+.menu {
+  position: relative;
+  width: 100%;
+  height: 1rem;
+  border-radius: var(--radius);
+  cursor: pointer;
+  transition: background-color .4s, color .4s;
+  background: var(--main);
+  font-size: .32rem;
+  color: white;
+
+  &:hover {
+    background: var(--main);
+  }
+}
+
+
+input[type="number"] {
+  -moz-appearance: textfield;
+}
+
+.ant-input-number-handler-wrap {
+  display: none !important;
+}
+
+.iconfont {
+  font-size: .3rem;
+}

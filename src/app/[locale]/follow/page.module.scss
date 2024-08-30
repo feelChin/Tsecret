@@ -1,0 +1,62 @@
+@import "@style/_util.scss";
+
+.followList {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 .4rem;
+  border-bottom: 0.01rem solid var(--subline);
+  height: 1.4rem;
+
+  figure {
+    width: .8rem;
+    height: .8rem;
+    border-radius: 50%;
+  }
+
+  .text {
+    position: relative;
+    flex: 1;
+    margin-left: .2rem;
+
+    time {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      right: 0;
+      color: var(--text);
+      font-size: .24rem;
+    }
+
+    h5,
+    h6 {
+      @include ell(1)
+    }
+
+    h6 {
+      margin-top: .06rem;
+      color: var(--text);
+    }
+  }
+
+  .menu {
+    display: flex;
+    align-items: center;
+
+    a {
+      margin-right: .4rem;
+    }
+
+    :global(.menu) {
+      margin-left: .4rem;
+      height: .6rem;
+      padding: 0 .2rem;
+      font-size: .28rem;
+      white-space: nowrap;
+
+      &:nth-child(2) {
+        background: var(--error);
+      }
+    }
+  }
+}

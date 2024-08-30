@@ -1,0 +1,190 @@
+@import "@style/_util.scss";
+
+.list,
+.userList {
+  position: relative;
+  background: var(--bg);
+
+  .item {
+    position: relative;
+    display: flex;
+    padding: .4rem .4rem .2rem;
+
+    &::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 100%;
+      border-bottom: 0.01rem solid var(--line);
+      opacity: .3;
+    }
+
+    figure {
+      width: 1rem;
+      height: 1rem;
+      margin-right: .16rem;
+
+      img {
+        border-radius: 50%;
+      }
+    }
+
+    .text {
+      flex: 1;
+
+      .title {
+        position: relative;
+        display: flex;
+        align-items: center;
+        color: var(--text);
+        margin-bottom: .1rem;
+
+        h5 {
+          font-weight: 700;
+          margin-right: .08rem;
+          color: var(--title);
+        }
+
+        i {
+          font-size: .3rem;
+          color: var(--main);
+          line-height: 1;
+          margin-right: .08rem;
+        }
+
+        span {
+          font-size: .3rem;
+          margin-left: .04rem;
+        }
+      }
+
+    }
+  }
+}
+
+.list {
+  .text {
+    .content {
+      margin: 0.04rem 0 0.2rem;
+      font-size: 0.32rem;
+      word-break: break-all;
+    }
+
+    .imgList {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      margin-bottom: .2rem;
+
+      .imgPlace {
+        width: 33%;
+      }
+
+      .imgCount {
+        position: absolute;
+        bottom: 0;
+        right: 0;
+        width: 100%;
+        height: 100%;
+        background: rgba(0, 0, 0, .6);
+        @include flexCenter;
+        color: white;
+        font-size: .5rem;
+      }
+
+      .imgItem {
+        position: relative;
+        width: calc(33.33% - 0.01rem);
+        padding-top: calc(33.33% - 0.01rem);
+        height: 100%;
+        margin-bottom: 0.02rem;
+
+        img {
+          position: absolute;
+          top: 0;
+          left: 0;
+          width: 100%;
+          height: 100%;
+          object-fit: cover;
+          cursor: pointer;
+        }
+      }
+    }
+
+    .iconList {
+      display: flex;
+      justify-content: space-between;
+      padding-right: .6rem;
+
+      .icon {
+        display: flex;
+        align-items: center;
+        color: var(--text);
+
+        i {
+          line-height: 1;
+          margin-right: .06rem;
+
+          &.active {
+            color: var(--main);
+          }
+        }
+
+        span {
+          line-height: 1;
+          font-size: .28rem;
+        }
+      }
+    }
+  }
+}
+
+.userList {
+  .link {
+    @include fill;
+    z-index: 6;
+  }
+
+  figure {
+    overflow: visible;
+
+    .vip {
+      position: absolute;
+      bottom: 0;
+      right: 0;
+      width: .4rem;
+      height: .4rem;
+      background: var(--main);
+      border-radius: 50%;
+      @include flexCenter;
+      transform: translate(.04rem, .04rem);
+
+      i {
+        font-size: .22rem;
+        color: white;
+      }
+    }
+  }
+
+  .item {
+    padding: .2rem;
+  }
+
+  .text {
+    .fans {
+      margin-top: .2rem;
+      display: flex;
+      align-items: center;
+      color: var(--text);
+    }
+
+    .arrow {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      right: .2rem;
+      color: var(--text);
+    }
+  }
+}

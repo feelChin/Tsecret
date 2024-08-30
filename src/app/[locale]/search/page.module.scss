@@ -1,0 +1,58 @@
+@import "@style/_util.scss";
+
+.clientPopup {
+  @include fill;
+  top: 1rem;
+  height: calc(100% - 2rem);
+  z-index: 99;
+  @include v0;
+  transition: opacity .4s;
+  overflow: hidden;
+
+  &.active {
+    @include v1;
+
+    .clientPopupWrapper {
+      transform: translateY(0);
+      transition-delay: .2s
+    }
+  }
+
+  .clientPopupBg {
+    @include fill;
+    background: rgba(0, 0, 0, 0.3);
+    z-index: -1;
+  }
+
+  .clientPopupWrapper {
+    padding: .4rem;
+    background: var(--bg);
+    border-top: 1px solid var(--subline);
+    box-shadow: 0 0.02rem 0.06rem -0.02rem var(--line);
+    transform: translateY(-100%);
+    transition: .2s;
+
+    p {
+      margin-bottom: .1rem;
+    }
+
+    .list {
+      display: flex;
+      margin-bottom: .2rem;
+
+      .item {
+        background: var(--menu);
+        padding: .08rem .2rem;
+        border-radius: .4rem;
+        font-size: .28rem;
+        margin-right: .3rem;
+        transition: .4s;
+
+        &.active {
+          background: var(--main);
+          color: white;
+        }
+      }
+    }
+  }
+}

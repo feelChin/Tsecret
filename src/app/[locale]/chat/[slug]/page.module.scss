@@ -1,0 +1,135 @@
+@import "@style/_util.scss";
+
+.messageWrapper {
+  background: var(--body);
+  height: calc(100% - 1rem);
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column-reverse;
+
+  .box {
+    flex: 1;
+
+    .more {
+      transform: translateY(2rem);
+    }
+  }
+}
+
+.sayWrapper {
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+  height: 1rem;
+  border-top: 0.01rem solid var(--subline);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 .4rem;
+  background: var(--bg);
+  max-width: 750px;
+
+  .content {
+    height: .6rem;
+    flex: 1;
+    margin-right: .4rem;
+
+    input {
+      width: 100%;
+      height: 100%;
+      border-radius: .6rem;
+      background: var(--input);
+      padding: 0 .3rem;
+      font-size: .28rem;
+      border: 0.01rem solid transparent;
+      transition: border .4s;
+
+
+      &:focus {
+        border-color: var(--main);
+      }
+    }
+  }
+
+  .menu {
+    background: var(--main);
+    padding: 0 .3rem;
+    height: .6rem;
+    @include flexCenter;
+    border-radius: .6rem;
+    color: white;
+  }
+}
+
+.item {
+  display: flex;
+  padding: .2rem .4rem;
+  margin-bottom: .1rem;
+
+  &.right {
+    display: flex;
+    flex-direction: row-reverse;
+
+    .text {
+      margin-left: 0;
+      margin-right: .4rem;
+
+      &:before {
+        right: auto;
+        left: 100%;
+        border-right-color: transparent;
+        border-left-color: var(--bg);
+      }
+    }
+
+    .other {
+      margin-left: 0;
+      margin-right: .2rem;
+    }
+  }
+
+  figure {
+    width: .8rem;
+    height: .8rem;
+    border-radius: 50%;
+  }
+
+  .text {
+    position: relative;
+    margin-left: .4rem;
+    padding: .2rem;
+    border-radius: .16rem;
+    background: var(--bg);
+    max-width: 5rem;
+    color: var(--title);
+
+    &:before {
+      content: '';
+      position: absolute;
+      top: .4rem;
+      right: 100%;
+      width: 0;
+      height: 0;
+      border: .12rem solid transparent;
+      border-right-color: var(--bg);
+    }
+  }
+
+  .other {
+    position: relative;
+    text-align: right;
+    margin-left: .2rem;
+
+    time {
+      font-size: .24rem;
+      color: var(--text);
+      display: block;
+      margin-top: .1rem;
+    }
+
+    p {
+      font-size: .24rem;
+      color: var(--main);
+    }
+  }
+}

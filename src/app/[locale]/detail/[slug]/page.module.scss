@@ -1,0 +1,246 @@
+ @import "@style/_util.scss";
+
+ .detail {
+   padding: 0 .4rem;
+ }
+
+ .userWrapper {
+   padding: 0.24rem 0 0.48rem;
+   display: flex;
+   align-items: center;
+
+   .avatar {
+     width: 1rem;
+     height: 1rem;
+     margin-right: .16rem;
+     overflow: hidden;
+     border-radius: 50%;
+   }
+
+   .font {
+     h5 {
+       font-size: .32rem;
+     }
+
+     p {
+       font-size: .3rem;
+       color: var(--text);
+     }
+   }
+ }
+
+ .text {
+   color: var(--text);
+   font-size: .32rem;
+   word-break: break-all;
+ }
+
+ .other {
+   padding: .6rem 0 .3rem;
+   color: var(--text);
+   font-size: .24rem;
+   border-bottom: 1px solid var(--subline);
+ }
+
+ .iconList,
+ .iconItem {
+   display: flex;
+   justify-content: space-between;
+   padding: .24rem 0;
+   border-bottom: 1px solid var(--subline);
+
+   .icon {
+     display: flex;
+     align-items: center;
+     color: var(--text);
+
+     i {
+       line-height: 1;
+       margin-right: .06rem;
+       font-size: .3rem;
+
+       &.active {
+         color: var(--main);
+       }
+     }
+
+     span {
+       line-height: 1;
+       font-size: .28rem;
+     }
+   }
+ }
+
+ .commentWrapper {
+   position: fixed;
+   height: 100%;
+   left: 50%;
+   top: 0;
+   transform: translateX(-50%);
+   width: 100%;
+   max-width: 750px;
+
+   @keyframes content {
+     100% {
+       transform: translateY(0%);
+     }
+   }
+
+   @keyframes commentWrapperBg {
+     100% {
+       opacity: 1;
+     }
+   }
+
+   .commentWrapperBg {
+     @include fill;
+     opacity: 0;
+     background: rgba(0, 0, 0, .3);
+     animation: commentWrapperBg .4s forwards;
+   }
+
+   .content {
+     position: absolute;
+     bottom: 0;
+     left: 0;
+     width: 100%;
+     height: 1rem;
+     display: flex;
+     align-items: center;
+     padding: 0 .4rem;
+     background: var(--bg);
+     transform: translateY(100%);
+     box-shadow: 0 0.02rem 0.04rem 0.02rem var(--line);
+     animation: content .4s forwards;
+
+     figure {
+       width: .6rem;
+       margin-right: .16rem;
+       border-radius: 50%;
+       height: .6rem;
+     }
+
+     input {
+       height: .6rem;
+       flex: 1;
+       border-radius: .6rem;
+       background: var(--body);
+       color: var(--title);
+       font-size: .28rem;
+       padding: 0 .24rem;
+
+       &:placeholder {
+         color: var(--text);
+       }
+
+     }
+   }
+ }
+
+ .commentList {
+   .item {
+     display: flex;
+     margin-top: .2rem;
+
+     &.little {
+       margin-top: .1rem;
+
+       figure {
+         width: .5rem;
+         height: .5rem;
+       }
+
+       .font {
+         .text {
+           margin-top: .06rem;
+         }
+       }
+     }
+
+     figure {
+       width: 1rem;
+       height: 1rem;
+       border-radius: 50%;
+       margin-right: 0.16rem;
+       transform: translateY(0.04rem);
+     }
+
+     .font {
+       flex: 1;
+
+       .text {
+         display: flex;
+         align-items: center;
+
+         p {
+           color: var(--title);
+           margin-right: .08rem;
+           font-size: .3rem;
+         }
+
+         .dot {
+           margin: 0 .04rem;
+         }
+
+         span {
+           color: var(--text);
+           font-size: .28rem;
+         }
+       }
+
+       .content {
+         p {
+           color: var(--title);
+           font-size: .28rem;
+         }
+
+         .iconItem {
+           padding: .16rem 4rem .16rem 0;
+           border: none;
+           display: flex;
+           align-items: flex-start;
+
+           i {
+             font-size: .24rem;
+           }
+         }
+       }
+     }
+   }
+ }
+
+ .fold {
+   position: relative;
+
+
+   .foldWrapper {
+     position: relative;
+     height: 0;
+
+
+     .foldList {
+       position: absolute;
+       top: 0;
+       left: 0;
+       width: 5.5rem;
+       overflow: hidden;
+       background: white;
+       padding: .2rem 0;
+       min-height: 1rem;
+       pointer-events: none;
+
+       &:after {
+         content: '';
+         position: absolute;
+         bottom: 0;
+         width: 100vw;
+         height: 1px;
+         background: var(--subline);
+       }
+
+       figure {
+         pointer-events: auto;
+       }
+     }
+   }
+ }

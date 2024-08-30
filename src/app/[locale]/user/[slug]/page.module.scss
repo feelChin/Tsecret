@@ -1,0 +1,200 @@
+@import "@style/_util.scss";
+
+.userWrapper {
+  position: relative;
+  height: 100%;
+  overflow-y: auto;
+
+  &:after {
+    content: '';
+    position: fixed;
+    top: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 100%;
+    height: 2rem;
+    max-width: 750px;
+    background: linear-gradient(to bottom, var(--bg), transparent);
+    @include v0;
+    transition: .4s;
+    pointer-events: none;
+  }
+
+  &.active {
+    &:after {
+      @include v1
+    }
+  }
+
+  .arrow {
+    position: fixed;
+    width: .54rem;
+    height: .54rem;
+    @include flexCenter;
+    top: .4rem;
+    left: .4rem;
+    z-index: 9;
+
+    &::after {
+      opacity: .8;
+      content: '';
+      @include fill;
+      background: var(--main);
+      border-radius: 50%;
+      z-index: -1;
+    }
+
+    i {
+      color: white;
+      transform: rotate(180deg) translateX(.02rem);
+      font-size: .24rem;
+    }
+  }
+
+  .banner {
+    position: relative;
+    width: 100%;
+    padding-top: 45vw;
+    height: 45vw;
+
+    figure {
+      @include fill;
+
+      img {
+        height: 45vw;
+      }
+    }
+
+
+  }
+
+  .user {
+    position: relative;
+    padding: .4rem;
+    background: var(--bg);
+
+    .flex {
+      position: absolute;
+      top: .4rem;
+      right: .4rem;
+      display: flex;
+      flex-direction: column;
+
+      .follow {
+        position: static;
+        margin-bottom: .2rem;
+      }
+    }
+
+    .edit,
+    .follow {
+      position: absolute;
+      top: .4rem;
+      right: .4rem;
+      border: 0.01rem solid var(--main);
+      border-radius: .4rem;
+      font-size: .28rem;
+      padding: .06rem .26rem;
+      color: var(--main);
+      display: flex;
+      justify-content: center;
+    }
+
+    .follow {
+      &.active {
+        background: var(--main);
+        color: white;
+      }
+    }
+
+    figure {
+      position: absolute;
+      top: -.5rem;
+      left: .4rem;
+      width: 1.2rem;
+      height: 1.2rem;
+      border-radius: 50%;
+      padding: .06rem;
+      background: white;
+
+      img {
+        border-radius: 50%;
+      }
+    }
+
+    h5 {
+      margin-top: .5rem;
+      font-size: .36rem;
+      font-weight: 700;
+    }
+
+    h6 {
+      color: var(--text);
+      margin: .1rem 0 .2rem;
+    }
+
+    .describe {
+      margin-bottom: .2rem;
+    }
+
+    .list {
+      display: flex;
+      align-items: center;
+      color: var(--text);
+      margin-top: .1rem;
+      margin-bottom: .1rem;
+    }
+
+    span {
+      font-size: .28rem;
+    }
+
+    p {
+      color: var(--title);
+      margin-right: .08rem;
+      line-height: 1.4;
+
+    }
+
+    .dot,
+    .place {
+      margin: 0 .14rem;
+    }
+  }
+
+  .nav {
+    position: relative;
+    border-bottom: 0.01rem solid var(--subline);
+    display: flex;
+    background: var(--bg);
+
+    span {
+      position: relative;
+      flex: 1;
+      display: flex;
+      justify-content: center;
+      padding: .2rem 0;
+      transition: .4s;
+
+      &.active {
+        color: var(--main);
+
+        &:after {
+          left: 0;
+          width: 100%;
+        }
+      }
+
+      &:after {
+        content: '';
+        position: absolute;
+        bottom: -0.02rem;
+        right: 0;
+        width: 0%;
+        height: 0.04rem;
+        background: var(--main);
+        transition: .4s;
+      }
+    }
+  }
+}

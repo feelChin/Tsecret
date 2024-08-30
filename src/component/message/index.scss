@@ -1,0 +1,58 @@
+@import "@style/_util.scss";
+
+.customMessage {
+  position: fixed;
+  top: .6rem;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 90%;
+  max-width: 680px;
+  z-index: 9999;
+
+  .messageTranstion {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+  }
+
+  .message {
+    display: flex;
+    align-items: center;
+    box-shadow: 0 0 .2rem var(--sub);
+    padding: .1rem .3rem;
+    border-radius: var(--radius);
+    margin-bottom: .2rem;
+    background: var(--bg);
+
+    @keyframes start {
+      0% {
+        opacity: 0;
+        transform: translateY(-30%);
+      }
+
+      100% {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    animation: start 0.5s forwards;
+
+    .iconfont {
+      margin-right: .16rem;
+      font-size: .4rem;
+
+      &.success {
+        color: green;
+      }
+
+      &.error {
+        color: rgb(224, 56, 56);
+      }
+    }
+
+    .text {
+      font-size: .24rem;
+    }
+  }
+}

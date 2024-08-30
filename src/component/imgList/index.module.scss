@@ -1,0 +1,60 @@
+@import "@style/_util.scss";
+
+.imgList {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  margin: .3rem 0;
+
+  &.little {
+    .imgItem {
+      width: 100%;
+      padding-top: 100%;
+    }
+  }
+
+  &.small {
+    .imgPlace {
+      width: 50%;
+    }
+
+    .imgItem {
+      width: calc(50% - 0.01rem);
+      padding-top: calc(50% - 0.01rem);
+    }
+  }
+
+  .imgPlace {
+    width: 33%;
+  }
+
+  .imgCount {
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, .6);
+    @include flexCenter;
+    color: white;
+    font-size: .5rem;
+  }
+
+  .imgItem {
+    position: relative;
+    width: calc(33.33% - 0.01rem);
+    padding-top: calc(33.33% - 0.01rem);
+    height: 100%;
+    margin-bottom: 0.02rem;
+
+    img {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      cursor: pointer;
+    }
+  }
+}

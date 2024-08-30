@@ -1,0 +1,132 @@
+@import "@style/_util.scss";
+
+
+.login {
+  width: 100%;
+  height: 100%;
+  padding: .5rem;
+  @include flexCenter;
+  flex-direction: column;
+
+  .sign {
+    width: 100%;
+  }
+
+  .reset {
+    width: 100%;
+    text-align: center;
+
+    h5 {
+      margin: .6rem 0;
+    }
+  }
+
+  .register {
+    width: 100%;
+
+    h5 {
+      text-align: center;
+      margin-bottom: 1rem;
+    }
+  }
+
+  .logo {
+    display: flex;
+    justify-content: center;
+  }
+
+  h5 {
+    margin: 1rem 0 .3rem;
+    font-size: .5rem;
+    font-weight: 700;
+  }
+
+  .wrapper {
+    width: 100%;
+
+    .item {
+      position: relative;
+      margin-bottom: .3rem;
+
+      &.active {
+        p {
+          transform: translateY(-102%);
+          color: var(--main);
+        }
+      }
+
+      .see {
+        position: absolute;
+        right: .3rem;
+        top: 50%;
+        transform: translateY(-50%);
+
+        &:after {
+          content: '';
+          position: absolute;
+          width: 100%;
+          left: 50%;
+          top: 50%;
+          transform: translate(-50%, -50%) rotate(45deg);
+          height: 1px;
+          background: var(--title);
+          opacity: 0;
+        }
+
+        &.active {
+          &:after {
+            opacity: 1;
+          }
+        }
+      }
+
+      p {
+        position: absolute;
+        top: 50%;
+        left: .18rem;
+        color: var(--text);
+        transform: translateY(-50%);
+        transition: .4s;
+        pointer-events: none;
+      }
+
+      input {
+        height: 1.2rem;
+        width: 100%;
+        border: 1px solid var(--line);
+        border-radius: var(--radius);
+        padding: .4rem .18rem 0;
+        line-height: 0;
+        transition: border-color .4s;
+
+        &:focus {
+          border-color: var(--main);
+        }
+
+        &::-ms-reveal {
+          display: none;
+        }
+      }
+    }
+  }
+
+  :global(.menu) {
+    margin-top: .1rem;
+    border-radius: .5rem
+  }
+
+  footer {
+    width: 100%;
+    left: 0;
+    display: flex;
+    position: absolute;
+    bottom: .2rem;
+    justify-content: center;
+
+    a {
+      color: var(--main);
+      margin: 0 .1rem;
+      font-size: .28rem;
+    }
+  }
+}

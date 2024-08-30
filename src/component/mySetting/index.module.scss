@@ -1,0 +1,118 @@
+@import "@style/_util.scss";
+
+.mySetting {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100vh;
+  width: 70%;
+  z-index: 999;
+  transform: translateX(-100%);
+  background: var(--bg);
+  box-shadow: -.02rem 0 .08rem .02rem var(--line);
+  transition: .4s;
+
+  &.active {
+    .mySettingBg {
+      opacity: 1;
+      visibility: visible;
+    }
+  }
+
+  .mySettingBg {
+    position: absolute;
+    width: 200%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    transform: translateX(50%);
+    background: rgba(0, 0, 0, .3);
+    opacity: 0;
+    visibility: hidden;
+    transition: .4s;
+  }
+
+  .user {
+    padding: 1rem 0 0 .48rem;
+
+    figure {
+      width: 1.2rem;
+      border-radius: 50%;
+      height: 1.2rem;
+
+      .place {
+        @include fill;
+        background: var(--body);
+      }
+    }
+
+    h5 {
+      font-size: .38rem;
+      font-weight: 700;
+      margin-top: .2rem;
+    }
+
+    span {
+      font-size: .3rem;
+      color: var(--text);
+    }
+
+    .userlist {
+      margin-top: .3rem;
+      display: flex;
+      align-items: center;
+      font-size: .3rem;
+
+      a {
+        display: flex;
+        align-items: center;
+        margin-right: .3rem;
+      }
+
+      span {
+        margin-left: .08rem;
+      }
+    }
+  }
+
+  .list {
+    padding-left: .4rem;
+    padding-top: .6rem;
+
+    .item {
+      display: flex;
+      align-items: center;
+      margin-bottom: .4rem;
+
+      i {
+        color: var(--text);
+        font-size: .32rem;
+      }
+
+      p {
+        margin-left: .4rem;
+        color: var(--title);
+        font-size: .3rem;
+      }
+    }
+  }
+
+  .otherList {
+    border-top: 1px solid var(--subline);
+    padding-left: .4rem;
+    padding-top: .6rem;
+    font-size: .3rem;
+  }
+
+  .theme {
+    position: absolute;
+    bottom: .4rem;
+    left: .4rem;
+
+    i {
+      font-size: .5rem;
+      color: var(--main);
+    }
+
+  }
+}

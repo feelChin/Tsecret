@@ -1,0 +1,120 @@
+@import "@style/_util.scss";
+
+.head {
+  position: absolute;
+  width: 100%;
+  top: 0;
+  height: 1rem;
+  display: flex;
+  padding: 0 .2rem 0 .4rem;
+  align-items: center;
+  justify-content: space-between;
+  box-shadow: 0 .02rem .04rem -.02rem var(--line);
+  z-index: 6;
+
+  .logo {
+    position: absolute;
+    height: 100%;
+    left: 50%;
+    transform: translateX(-50%);
+    font-weight: 700;
+    display: flex;
+    align-items: center;
+  }
+
+  .arrow {
+    transform: rotate(-180deg);
+    font-size: .3rem;
+    @include clickLocal
+  }
+
+  .avatar {
+    width: .6rem;
+    height: .6rem;
+    border-radius: 50%;
+
+    .text {
+      @include fill;
+      font-size: .26rem;
+      @include flexCenter;
+      color: var(--text);
+    }
+  }
+
+  i {
+    font-size: .4rem;
+    color: var(--main);
+  }
+
+
+  .searchWrapper {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: var(--bg);
+
+    &.active {
+      width: 100vw;
+      max-width: 750px;
+      height: 100%;
+      pointer-events: none;
+
+      span {
+        pointer-events: auto;
+      }
+
+      i {
+        color: var(--main);
+      }
+
+      .search {
+        width: 70%;
+        padding-left: .2rem;
+        border-color: var(--main);
+        transition: .4s;
+
+        input {
+          pointer-events: auto;
+        }
+      }
+    }
+
+    .search {
+      width: 4rem;
+      height: .66rem;
+      padding-left: 1rem;
+      display: flex;
+      align-items: center;
+      border: 1px solid transparent;
+      background: var(--menu);
+      border-radius: .66rem;
+      border: 0.01rem solid transparent;
+    }
+
+    i {
+      color: var(--line);
+      font-size: .3rem;
+      transition: .4s;
+    }
+
+    span {
+      font-size: .3rem;
+      color: var(--main);
+      margin-left: .3rem;
+    }
+
+    input {
+      width: 100%;
+      height: 100%;
+      background: transparent;
+      pointer-events: none;
+      padding: 0 .3rem 0 .1rem;
+      font-size: .3rem;
+      color: var(--title);
+
+      &:placeholder {
+        color: var(--line);
+      }
+    }
+  }
+}

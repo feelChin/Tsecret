@@ -1,0 +1,137 @@
+@import "@style/_util.scss";
+
+.newFrient {
+  position: relative;
+  height: 1rem;
+  border-bottom: 0.01rem solid var(--subline);
+  display: flex;
+  align-items: center;
+  padding: 0 .4rem;
+
+  .link {
+    @include fill;
+  }
+
+  figure {
+    width: .6rem;
+    height: .6rem;
+    border-radius: 50%;
+  }
+
+  .onlyList {
+    display: flex;
+    align-items: center;
+    margin-right: .4rem;
+
+    figure {
+      margin-right: .2rem;
+    }
+  }
+
+  .manyList {
+    transform: translateX(.3rem);
+
+    &:nth-child(2) {
+      figure {
+        transform: translateX(-0.3rem);
+      }
+    }
+
+    &:nth-child(3) {
+      figure {
+        transform: translateX(-.6rem);
+      }
+    }
+
+  }
+
+  p {
+
+    color: var(--text);
+  }
+
+  .arrow {
+    position: absolute;
+    right: .4rem;
+    transform: rotate(45deg);
+
+    &:after,
+    &:before {
+      content: '';
+      position: absolute;
+      @include transformCenter;
+      background: var(--line);
+    }
+
+    &:after {
+      width: .24rem;
+      height: .02rem;
+    }
+
+    &:before {
+      height: .24rem;
+      width: .02rem;
+    }
+  }
+}
+
+.messageList {
+
+  .item {
+    position: relative;
+    display: flex;
+    padding: .2rem .4rem;
+    border-bottom: 0.01rem solid var(--subline);
+
+    figure {
+      width: .8rem;
+      height: .8rem;
+      border-radius: 50%;
+    }
+
+    .text {
+      margin-left: .2rem;
+
+      p {
+        color: var(--text);
+      }
+    }
+
+    .link {
+      position: absolute;
+      left: 1.2rem;
+      width: calc(100% - 1.2rem);
+      top: 0;
+      height: 100%;
+    }
+
+    .dot {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      right: .4rem;
+      width: .4rem;
+      height: .4rem;
+      background: var(--error);
+      border-radius: 50%;
+      color: white;
+      @include flexCenter;
+      font-size: .24rem;
+    }
+  }
+
+  .noitem {
+    height: 1.2rem;
+    display: flex;
+    align-items: center;
+    padding: 0 .4rem;
+    color: var(--text);
+    border-bottom: 0.01rem solid var(--subline);
+
+    i {
+      position: absolute;
+      right: .4rem;
+      color: var(--main);
+    }
+  }
+}
