@@ -31,6 +31,8 @@ export async function POST(req: Request) {
 
 			fs.writeFile(`./public/${name}`, buffer, "binary", (err) => {
 				if (err) {
+					console.log(err);
+
 					throw "上传图片错误";
 				}
 			});
