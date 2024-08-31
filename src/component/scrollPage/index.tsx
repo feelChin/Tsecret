@@ -87,7 +87,7 @@ function Index({ children, total, data, loading, request }: inter_props) {
 					) : (
 						""
 					)}
-					{data.length == total && <NoMoreMsg />}
+					{data.length == total && data.length !== 0 && <NoMoreMsg />}
 					{data.length === 0 && <NoMsg />}
 				</>
 			) : (

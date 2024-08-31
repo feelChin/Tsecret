@@ -21,6 +21,14 @@ export async function GET(req: Request) {
 			user_id,
 		});
 
+		if (!res.length) {
+			return NextResponse.json({
+				code: 200,
+				data: [],
+				total: 0,
+			});
+		}
+
 		const follow: i_follow = {};
 
 		res.forEach(({ follow_id, createdAt }) => {
