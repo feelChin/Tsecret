@@ -119,10 +119,6 @@ export default (url: string, option: inter_option, data?: any) => {
 				removeCookieData("token");
 				const locale = getCookieData("NEXT_LOCALE");
 
-				console.log("登录已失效，请重新登录");
-
-				return;
-
 				window.location.href = `/${locale}/login`;
 
 				return new Promise(() => {});
