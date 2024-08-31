@@ -29,7 +29,7 @@ export async function POST(req: Request) {
 			const arrayBuffer = await (file as Blob).arrayBuffer();
 			const buffer = Buffer.from(arrayBuffer);
 
-			fs.writeFile(`./public/${name}`, buffer, "binary", (err) => {
+			fs.writeFile(`./public${name}`, buffer, "binary", (err) => {
 				if (err) {
 					console.log(err);
 
