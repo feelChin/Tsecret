@@ -280,7 +280,7 @@ function Index() {
 
 		timer.current = setInterval(() => {
 			getMessage(true);
-		}, 500000000);
+		}, 3000);
 
 		listenMoreOb.current = new IntersectionObserver(function (entries) {
 			entries.forEach((entry) => {

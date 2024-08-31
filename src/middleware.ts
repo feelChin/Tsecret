@@ -14,13 +14,14 @@ async function middleware1(request: NextRequest) {
 	const filterPathName = pathname.split("/")[2];
 
 	const isWhite = whiteList.includes(filterPathName); // 判断路由是否白名单
-
+	console.log(isWhite);
+	console.log(whiteList);
 	if (isWhite) {
 		return NextResponse.next();
 	}
 
 	const token = request.cookies.get("token")?.value;
-
+	console.log(request.cookies);
 	if (!token) {
 		throw "无权限访问";
 	}
