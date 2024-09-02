@@ -14,8 +14,8 @@ async function middleware1(request: NextRequest) {
 	const filterPathName = pathname.split("/")[2];
 
 	const isWhite = whiteList.includes(filterPathName); // 判断路由是否白名单
-	console.log(isWhite);
-	console.log(whiteList);
+	console.log(request.nextUrl);
+
 	if (isWhite) {
 		return NextResponse.next();
 	}
