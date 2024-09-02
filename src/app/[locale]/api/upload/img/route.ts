@@ -26,16 +26,17 @@ export async function POST(req: Request) {
 			(Boolean(type.indexOf("png") > -1) ? "png" : "jpg");
 
 		const handleFile = async () => {
-			const arrayBuffer = await (file as Blob).arrayBuffer();
-			const buffer = Buffer.from(arrayBuffer);
+			try {
+				const arrayBuffer = await (file as Blob).arrayBuffer();
+				const buffer = Buffer.from(arrayBuffer);
 
-			fs.writeFile(`./public${name}`, buffer, "binary", (err) => {
-				if (err) {
-					console.log(err);
+				fs.writeFileSync("index.txt", "Hello World!");
 
-					throw "上传图片错误";
-				}
-			});
+				fs.writeFileSync(`./public${name}`, buffer, "binary");
+			} catch (err) {
+				console.log(err);
+				throw "上传图片错误";
+			}
 		};
 
 		await handleFile();
