@@ -9,7 +9,7 @@ async function middleware1(request: NextRequest) {
 		return NextResponse.next();
 	}
 
-	const whiteList = [undefined, "login", "user", "search", "detail"]; //路由白名单
+	const whiteList = [undefined, "login", "user", "search", "edit", "detail"]; //路由白名单
 
 	const filterPathName = pathname.split("/")[2];
 

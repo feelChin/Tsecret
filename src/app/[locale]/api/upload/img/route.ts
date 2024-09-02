@@ -30,12 +30,9 @@ export async function POST(req: Request) {
 				const arrayBuffer = await (file as Blob).arrayBuffer();
 				const buffer = Buffer.from(arrayBuffer);
 
-				fs.writeFileSync("index.txt", "Hello World!");
-
 				fs.writeFileSync(`./public${name}`, buffer, "binary");
 			} catch (err) {
-				console.log(err);
-				throw "上传图片错误";
+				throw "上传图片错误  写入图片错误 fs.writeFileSync 不支持";
 			}
 		};
 
