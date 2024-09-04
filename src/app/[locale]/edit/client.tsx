@@ -39,6 +39,10 @@ function Index() {
 	}
 
 	async function handleSend() {
+		if (!value) {
+			throw "请输入文章详情";
+		}
+
 		let arr = [];
 
 		for (let item of fileList) {
@@ -146,7 +150,9 @@ function Index() {
 										</figure>
 										<div
 											className={style.delete}
-											onClick={() => {
+											onClick={(e) => {
+												e.stopPropagation();
+
 												const prevList = [...fileList];
 												prevList.splice(index, 1);
 

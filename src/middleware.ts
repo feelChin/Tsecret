@@ -9,19 +9,18 @@ async function middleware1(request: NextRequest) {
 		return NextResponse.next();
 	}
 
-	const whiteList = [undefined, "login", "user", "search", "edit", "detail"]; //路由白名单
+	const whiteList = [undefined, "login", "user", "search", "detail"]; //路由白名单
 
 	const filterPathName = pathname.split("/")[2];
 
 	const isWhite = whiteList.includes(filterPathName); // 判断路由是否白名单
-	console.log(request.nextUrl);
 
 	if (isWhite) {
 		return NextResponse.next();
 	}
 
 	const token = request.cookies.get("token")?.value;
-	console.log(request.cookies);
+
 	if (!token) {
 		throw "无权限访问";
 	}

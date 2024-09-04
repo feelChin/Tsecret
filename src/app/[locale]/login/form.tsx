@@ -74,7 +74,7 @@ function Index({ name, type }: i_props) {
 		setCookieData("token", token);
 		updateUser({ token });
 
-		router.push(`/${locale}`);
+		window.location.href = `/${locale}`;
 	}
 
 	useEffect(() => {

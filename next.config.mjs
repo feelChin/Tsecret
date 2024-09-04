@@ -19,6 +19,16 @@ const withNextIntl = createNextIntlPlugin();
 
 const nextConfig = {
 	reactStrictMode: false,
+	images: {
+		remotePatterns: [
+			{
+				protocol: "https",
+				hostname: "s2.loli.net",
+				port: "",
+				pathname: "/**",
+			},
+		],
+	},
 };
 
 export default withNextIntl(nextConfig);

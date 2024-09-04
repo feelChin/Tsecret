@@ -15,7 +15,6 @@ export async function POST(req: Request) {
 		await db();
 
 		const checkUser = await UserInfoModel.findOne({ _id: user_id });
-		console.log(checkUser);
 
 		if (checkUser) {
 			const res = await ArticleListModel.create({

@@ -72,6 +72,8 @@ function RenderMessage({ resolve }: { resolve: any }) {
 }
 
 function MessageChild({ text, type }: inter_param) {
+	console.log(text);
+
 	return (
 		<div className="message">
 			<div

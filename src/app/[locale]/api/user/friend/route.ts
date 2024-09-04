@@ -175,8 +175,6 @@ export async function POST(req: Request) {
 			}
 		}
 
-		console.log(3);
-
 		await UserFriendModel.create({ friend_ids: [user_id, friend_id] });
 
 		return NextResponse.json({

@@ -8,7 +8,6 @@ import Http from "@util/fetch";
 import useLoading from "@hook/useLoading";
 import Button from "@component/button";
 import Message from "@component/message";
-import Head from "@component/head";
 import Link from "next/link";
 import style from "./page.module.scss";
 

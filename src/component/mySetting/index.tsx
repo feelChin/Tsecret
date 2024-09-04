@@ -77,7 +77,6 @@ function Index({ show, cancel }: i_props) {
 				className={style.theme}
 				onClick={() => {
 					const myTheme = theme === "light" ? "dark" : "light";
-					console.log(myTheme);
 
 					changeTheme(myTheme);
 					setCookieData("theme", myTheme);

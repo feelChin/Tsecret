@@ -41,6 +41,10 @@ interface i_list {
 	_ids: string[];
 }
 
+interface i_status {
+	[key: string]: number;
+}
+
 const readList: string[] = [];
 
 function Index() {
@@ -52,7 +56,7 @@ function Index() {
 	const { slug } = useParams();
 
 	const paramRef = useRef({
-		page: 0,
+		page: 1,
 		page_size: 10,
 	});
 
@@ -77,30 +81,6 @@ function Index() {
 	const debounceputMessage = useDebounce(putMessage, 300, false);
 
 	async function sendMessage() {
-		const cacheData = [
-			...list.data,
-			{
-				_id: dayjs().format("YYYY-MM-DD HH:mm:ss"),
-				createdAt: dayjs().format("YYYY-MM-DD HH:mm:ss"),
-				status: 0,
-				text: message,
-				type: String(slug),
-				user_id: userInfo.id as string,
-			},
-		];
-
-		setList(
-			{
-				...list,
-				data: cacheData,
-			},
-			() => {
-				if (scrollRef.current) {
-					scrollRef.current.scrollTop = 0;
-				}
-			}
-		);
-
 		try {
 			await Http(
 				`${process.env.NEXT_PUBLIC_BASE_URL}[locale]/api/user/message`,
@@ -148,30 +128,31 @@ function Index() {
 				// 判断之前数据是否包含最新的id
 				checkChange = false;
 
-				const copyData = [...list.data];
+				const newStatus: i_status = {};
+				data.forEach((item) => {
+					if (item.status) {
+						newStatus[item._id] = item.status;
+					}
+				});
 
-				let last_flag = false;
-				let last_count = -1;
+				const newStatusArr = Object.keys(newStatus);
+				const prevList = [...list.data];
+
 				let is_change = false;
 
-				copyData.forEach((item) => {
-					if (item._id === lastMessage._id) {
-						last_flag = true;
-					}
-					if (last_flag) {
-						last_count += 1;
+				prevList.forEach((item: i_item) => {
+					const id = item._id;
 
-						if (item.status !== data[last_count].status) {
-							item.status = data[last_count].status;
-							is_change = true;
-						}
+					if (newStatusArr.includes(id) && !item.status) {
+						item.status = 1;
+						if (!is_change) is_change = true;
 					}
 				});
 
 				if (is_change) {
 					setList({
 						...list,
-						data: [...copyData],
+						data: [...prevList],
 					});
 				}
 			} else {
@@ -255,22 +236,27 @@ function Index() {
 					avatar,
 				},
 			});
+
+			getMessage(true);
 		}
 	}, [userInfo]);
 
 	useEffect(() => {
+		if (!Object.keys(user).length) return;
+
 		ob.current = new IntersectionObserver(function (entries) {
 			entries.forEach((entry) => {
 				if (entry.isIntersecting) {
 					const target = entry.target;
 					ob.current.unobserve(target);
 					const key = target.getAttribute("id");
+
 					if (key) readListProxy.current.push(key);
 				}
 			});
 		});
 
-		itemRefs.current.forEach((item) => {
+		scrollRef.current?.querySelectorAll(".listenMsg").forEach((item) => {
 			ob.current.observe(item);
 		});
 
@@ -300,7 +286,6 @@ function Index() {
 		listenMoreOb.current.observe(listenMoreRef.current);
 
 		return () => {
-			readList.length = 0;
 			ob.current.disconnect();
 			listenMoreOb.current.disconnect();
 			clearInterval(timer.current);
@@ -336,14 +321,11 @@ function Index() {
 						return (
 							<div
 								className={`${style.item} ${
-									user_id === userInfo.id ? style.right : ""
+									user_id === userInfo.id
+										? `${style.right} `
+										: `${!status ? "listenMsg" : ""}`
 								}`}
 								key={_id}
-								ref={(el) => {
-									if (!status && el && user_id !== userInfo.id) {
-										itemRefs.current.push(el);
-									}
-								}}
 								id={_id}
 							>
 								<figure>
