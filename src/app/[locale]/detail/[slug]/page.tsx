@@ -43,18 +43,19 @@ export default async function Index({ params }: inter_props) {
 		_id: slug,
 	});
 
-	const {
+	const { onlyname, username, avatar, createdAt } = await UserInfoModel.findOne(
+		{
+			_id: user_id,
+		}
+	);
+
+	console.log({ content, user_id, img_list });
+
+	console.log({
 		onlyname,
 		username,
 		avatar,
-		sex,
-		age,
-		follows,
-		vip,
-		fans,
 		createdAt,
-	} = await UserInfoModel.findOne({
-		_id: user_id,
 	});
 
 	return (
@@ -77,7 +78,7 @@ export default async function Index({ params }: inter_props) {
 				<div className={style.other}>
 					{dayjs(createdAt).format("YYYY/MM/DD · HH:mm")}
 				</div>
-				<Client id={slug} />
+				{/* <Client id={slug} /> */}
 			</div>
 		</section>
 	);
