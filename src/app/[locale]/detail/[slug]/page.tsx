@@ -78,7 +78,7 @@ export default async function Index({ params }: inter_props) {
 				<div className={style.other}>
 					{dayjs(createdAt).format("YYYY/MM/DD · HH:mm")}
 				</div>
-				{/* <Client id={slug} /> */}
+				<Client id={slug} />
 			</div>
 		</section>
 	);
