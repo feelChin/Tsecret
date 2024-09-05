@@ -42,9 +42,9 @@ function Index({ imgList }: { imgList: string[] }) {
 							}}
 						>
 							<Image src={`${item}`} width={100} height={100} alt="" />
-							{index === 8 && imgList.length > 8 && (
+							{index === 8 && imgList.length > 9 && (
 								<>
-									<div className={style.imgCount}>+{imgList.length - 8}</div>
+									<div className={style.imgCount}>+{imgList.length - 9}</div>
 								</>
 							)}
 						</div>
